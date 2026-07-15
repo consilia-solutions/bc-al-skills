@@ -64,10 +64,10 @@ plugin-root environment variable, prefer it.
    file and execute its Source → Relevance → Worklist → Action steps, reading
    `PLUGIN_ROOT/skills/read.md` and `PLUGIN_ROOT/skills/do.md` on demand.
 
-4. **Emit findings.** Produce the rolled-up findings report in the DO output contract
-   (`outcome`, `findings`, `references`, `confidence`, `suppressed`). Do not invent a
-   different shape; downstream consumers parse the DO contract without skill-specific
-   logic.
+4. **Emit findings.** Produce the rolled-up findings report in the DO output contract,
+   including each review finding's producer-supplied `domain` label (`outcome`,
+   `findings`, `references`, `confidence`, `suppressed`). Do not invent a different
+   shape; downstream consumers parse the DO contract without skill-specific logic.
 
 If Entry returns `no-match` or `failed`, return the dispatch record unchanged so the
 caller can log the reason.

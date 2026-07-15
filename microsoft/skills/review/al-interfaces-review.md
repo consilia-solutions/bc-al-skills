@@ -85,7 +85,7 @@ Outcome selection:
 
 ## Output
 
-Output conforms to the DO output contract. A populated example:
+Output conforms to the DO output contract. Every finding this skill emits MUST set `findings[].domain` to `"Interfaces"`. A populated example:
 
 ```json
 {
@@ -108,7 +108,8 @@ Output conforms to the DO output contract. A populated example:
       "references": [
         { "path": "microsoft/knowledge/interfaces/prefer-interface-over-case-branching.md" }
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "domain": "Interfaces"
     },
     {
       "id": "microsoft/knowledge/interfaces/set-defaultimplementation-on-enum.md",
@@ -121,7 +122,8 @@ Output conforms to the DO output contract. A populated example:
       "references": [
         { "path": "microsoft/knowledge/interfaces/set-defaultimplementation-on-enum.md" }
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "domain": "Interfaces"
     }
   ],
   "suppressed": []

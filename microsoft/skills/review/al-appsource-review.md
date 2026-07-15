@@ -82,7 +82,7 @@ Outcome selection:
 
 ## Output
 
-Output conforms to the DO output contract. A populated example:
+Output conforms to the DO output contract. Every finding this skill emits MUST set `findings[].domain` to `"AppSource"`. A populated example:
 
 ```json
 {
@@ -105,6 +105,7 @@ Output conforms to the DO output contract. A populated example:
         { "path": "microsoft/knowledge/appsource/object-affixes-prevent-collisions.md" }
       ],
       "confidence": "high",
+      "domain": "AppSource",
       "suggested-code": "field(50100; \"Loyalty Points ABC\"; Integer)"
     }
   ],
