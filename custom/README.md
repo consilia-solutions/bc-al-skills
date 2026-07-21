@@ -15,3 +15,10 @@ custom/
 Fork or clone BCQuality into your own repository and add your content here. Knowledge files in `/custom/knowledge/` follow the same frontmatter schema and section requirements as every other layer. Action skills in `/custom/skills/` follow the Action Skill template defined in `/skills/`.
 
 When agents consume BCQuality, the custom layer is loaded alongside Microsoft and Community — your overrides apply automatically.
+
+## Included custom skills
+
+- `custom/skills/harden-al-test-execution/SKILL.md`
+	- Adds fail-fast preflight checks for AL test workflows.
+	- Forces deterministic outcomes (`Passed`, `Failed`, `Blocked`) to avoid freeze-like runs.
+	- Enforces max retry limits and explicit blocked-state reporting.

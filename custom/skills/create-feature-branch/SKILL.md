@@ -41,28 +41,37 @@ Optional but recommended:
 - Collapse repeated hyphens.
 - Trim leading and trailing hyphens.
 
-4. Assemble the branch name.
+4. Limit branch length.
+- Use a maximum branch name length of 80 characters.
+- Reserve prefix space for: feature/<JIRA-KEY>-
+- Compute max slug length as: 80 - len("feature/") - len(<JIRA-KEY>) - 1
+- If the slug exceeds max length, truncate to max slug length.
+- Prefer truncating at the last hyphen within the limit to avoid cutting words mid-token.
+- Trim trailing hyphens after truncation.
+
+5. Assemble the branch name.
 - Format: feature/<JIRA-KEY>-<title-slug>
 - Example: feature/BC-123-improve-posting-diagnostics
 
-5. Validate against quality checks.
+6. Validate against quality checks.
 - Starts with feature/
 - Contains exactly one Jira key section after feature/
 - Contains a non-empty title slug
 - Uses only allowed slug characters
+- Total branch name length is 80 characters or less
 
-6. Handle decision branches.
+7. Handle decision branches.
 - If branch already exists locally: checkout instead of create.
 - If remote branch exists: do tracking checkout.
 - If working tree is dirty: warn user before switching and ask to continue.
 
-7. Execute Git command.
+8. Execute Git command.
 - Create new branch:
   git checkout -b feature/<JIRA-KEY>-<title-slug>
 - Or track remote:
   git checkout --track origin/feature/<JIRA-KEY>-<title-slug>
 
-8. Confirm completion.
+9. Confirm completion.
 - Show current branch with: git branch --show-current
 - Confirm the final branch equals the generated branch name.
 
@@ -71,6 +80,7 @@ Optional but recommended:
 - Missing key or title: pause and request the missing input.
 - Invalid key format: ask user to confirm the intended Jira key.
 - Empty slug after cleanup: request a clearer title.
+- Slug is truncated by max length: show the truncated result and ask for confirmation before creating.
 - Existing branch name conflict: choose checkout or revise title slug.
 
 ## Completion Criteria
@@ -78,6 +88,7 @@ Optional but recommended:
 This skill is complete only when all checks pass:
 - A branch name is generated in the exact pattern.
 - Branch name passes validation rules.
+- Branch length is at or below the maximum.
 - Git is on the intended branch.
 - The final branch name is shown to the user.
 
